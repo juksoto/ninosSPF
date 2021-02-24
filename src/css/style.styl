@@ -1,0 +1,877 @@
+/*
+* SPF Niños
+* [name project]
+*/	
+flex-version = flex
+@import "nib"
+
+
+/*
+* Import fonts
+*/
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+//
+// We declare the fonts for the headers, the content, the main font and the secondary font.
+//
+
+fontForHeaders()
+	font-family: 'Montserrat', sans-serif;
+
+fontForContent()
+	font-family:  'Work Sans', sans-serif;
+
+fontMain()
+	font-family: 'Work Sans', sans-serif;
+
+fontSecondary()
+	font-family: 'Montserrat', sans-serif;
+	
+// Parameters
+
+// Font Size Body
+fontSize 		= 16px
+
+//Color Web Entitie
+colorPrimary 	= #004884
+colorDos  		= #3366CC
+colorTres 		= #E5EEFB
+colorEntidad 	= #3366CC
+
+colorVisited 		= colorDos
+colorFaltaunDia 	= #F3561F
+colorSuccess 		= #069169
+colorError	 		= #A80521
+colorInfo 			= #47abce
+colorFontInfo		= #1F4788
+colorWarning 		= #FFAB00
+
+// scale gray
+colorGrayDark  = #333
+colorGrayLigth 	= #efefef
+
+// Procesa si el color es oscuro o claro y genera el contraste
+	isDarkoLigth(color)
+		if luminosity(color) >= .5
+			return colorGrayDark
+		else
+			return white
+	// Hacer un color % mas oscuro o claro
+	doDark(color)
+		return darken(color, 20%)
+	doLight(color)
+		return lighten(color, 50%)
+		
+/*
+* Estilos Base Sede Electronica
+* [description] KIT UI GOV CO - https://www.gov.co/files/KITUI.pdf
+*/
+html
+	font-size 16px
+	
+body
+	font-size fontSize
+	fontForContent()
+	overflow-x hidden
+	font-weight 500
+	line-height 1.5em
+	color colorGrayDark
+	&.faFontLg
+		font-size 14px !important
+	&.faFont2x
+		font-size 20px
+	&.faFont3x
+		font-size 16px !important
+		
+h1, h2, h3, h4, h5, h6
+	color colorPrimary
+	fontForHeaders()	
+	
+.ui-widget
+	fontForContent()
+
+a
+	color colorDos
+	&:hover, &:focus, &:visited
+		color colorPrimary
+
+header
+	background-color white
+	height auto
+	padding-top 0
+	position relative
+	z-index 4
+	.header-gov
+		background-color colorDos
+		padding 0
+		color white
+		padding-left 1em
+		padding-right 1em
+		padding-top 0.2em
+		padding-bottom 0.2em
+		.row > .item
+			display inline-block
+			vertical-align middle
+		.logo-gov
+			padding 0 0.5em
+			a
+				display block
+				max-width 8em
+				padding 0.5em
+				img
+					display block
+					width 100%
+					height auto
+		.toolbar-gov-co
+			padding-top 0.5em
+			text-align center
+			ul
+				padding 0
+				margin 0
+				display	inline-block
+				li
+					vertical-align top
+					&.toolbar-icon
+						color colorPrimary
+						h3
+							color colorPrimary
+							font-weight bold
+							font-size 1em
+							letter-spacing 0.1em
+							margin 0
+							padding 0.5em
+							text-transform uppercase
+							
+						> a, button
+							display inline-block
+							color colorPrimary
+							height 35px
+							width 35px
+							padding 0.3em
+							font-size 1em
+							transition all 0.25s ease-in-out
+							text-decoration none
+							color colorPrimary
+							background-color white
+							border-radius 0.5em
+							text-align center
+							border 0
+							.fa
+								padding 0
+							&:hover, &:focus
+								color white
+								background-color colorDos
+								transition all 0.25s ease-in-out
+					&.toolbar_language
+						color colorPrimary
+						margin 0
+						padding 0
+						a
+							color colorEnlaces
+							line-height 1
+							font-size 1em
+							transition all 0.25s ease-in-out
+							text-decoration none
+							text-align center
+							border 0
+							fontForHeaders()
+							font-weight 600
+							background-color white
+							width 25px
+							height 25px
+							display flex
+							border-radius 0.4em
+							align-items center
+							justify-content center
+							font-size 0.8em
+							&:hover, &:focus
+								background-color colorTres
+								color colorDos
+								transition all 0.25s ease-in-out
+							&.lang_active
+								display none
+					&.toolbar-text a
+						color white
+						text-decoration none
+						padding 0 0.3em
+						font-size 1em
+						display block
+						font-weight 300
+						&:hover, &:focus
+							color colorYellow
+					
+					&.toolbar-border-right
+						border-right 1px solid white	
+		ul.dropdown-menu
+			padding-bottom 0.5em
+	.header_entidad
+		padding 1em
+		.logo_entidad
+			padding 0 0.5em
+			a
+				display inline-block
+				padding 0 0.4em
+				img
+					display block
+			a.logo_horizontal
+				img
+					width auto
+					height auto
+					max-height 60px
+			a.logo_vertical
+				img
+					width 100%
+					height auto
+					max-width 80px
+					display block
+		.logoSec
+			text-align right
+			a
+				display inline-block
+				max-width 300px
+				img
+					width 100%
+					height auto
+	nav
+		background-color #274365
+		padding 0 1em !important
+		.navbar-nav
+			li.nav-item > a
+				display block
+				color white
+				text-align center
+				padding 1em
+				transition 0.25s ease-in-out all
+				font-size 0.9em
+				img
+					display inline-block
+					width 100%
+					height auto
+					max-width 60px
+					transition 0.25s ease-in-out all
+				p
+					color white
+					fontForHeaders()
+					font-weight bold
+					margin 0
+				&:hover, &:focus
+					background-color #ff0000
+					transition 0.25s ease-in-out all
+					p
+						color white
+					img
+						height auto
+						transition 0.25s ease-in-out all
+			.dropdown-menu
+				width 100%
+				ul
+					width 100%
+					padding 0
+					list-style none
+					li a
+						color colorGrayDark
+						&.dropdown-item
+							&:hover, &:focus, &.active, &:active
+								background-color colorPrimary
+								color white
+.botonesFlotantes
+	z-index 3
+	ul
+		padding 0
+		list-style none
+		li
+			display block
+			a
+				padding 0.5em 1em
+				float right
+				border-radius 1.5em 0 0 1.5em
+				color white
+				background-color colorPrimary
+				font-size 1.4em
+				display block
+				margin-bottom 0.2em
+				max-width 90px
+				small
+					display block
+				&.item_edad_1
+					background-color #ffce44
+				&.item_edad_2
+					background-color #f5b5d2
+				&.item_edad_3
+					background-color #87c5d5
+				&.edadActive
+					transform scale(1.2)
+					margin-top 0.5em
+					margin-bottom 0.5em
+					padding-right 2em
+					max-width none
+				&:hover, &:focus
+					background-color #ff0000
+					color white
+					text-decoration none
+
+	
+@media screen and (min-width 769px)
+	header .navbar  
+		.navbar-nav
+			width 100%
+			display flex
+			justify-content space-between
+			flex-wrap wrap
+			.nav-item 
+				flex-grow 1
+				text-align center
+				padding 0
+				.nav-link
+					min-height 125px
+					line-height 1.3em
+						
+		&.navbar-expand-lg .navbar-nav .nav-link
+			padding-left 2.5em
+			padding-right 2.5em	
+			display inline-block
+@media screen and (max-width 992px)
+	header .navbar  
+		.navbar-toggler 
+			padding 1em
+			color white
+			display block
+			text-align center
+			margin 0 auto
+		.navbar-nav li.nav-item > a
+			display block
+			width 100%
+			img
+				display none
+.btn
+	background-color #ff0000
+	color white
+	padding 0.5em 1em
+	border-radius 1em
+	transition 0.25s ease-in-out all
+	fontForHeaders()
+	font-weight 500
+	&:visited
+		color white
+	&:hover, &:focus
+		background-color colorPrimary
+		color white
+		transition 0.25s ease-in-out all
+.zonasPortal
+	padding-top 4em
+	padding-bottom 4em
+.mainSlider
+	background url("../img/bgSlider.jpg") no-repeat
+	background-size cover
+	background-position center bottom
+	display flex
+	justify-content center
+	align-items center
+	padding-top 2em
+	padding-bottom 2em
+	.descSlider
+		text-align center
+		padding 1em
+		h1
+			font-weight bold
+			color colorPrimary
+			font-size 2em
+			margin-bottom 1em
+		ul
+			list-style none
+			padding 0
+			&.listSlider
+				li
+					text-align center
+					margin-bottom 1em
+					a
+						display block
+						font-weight bold
+						color colorPrimary
+						line-height 1.3
+						transition 0.25s ease-in-out all
+						background-color transparent
+						padding 1em
+						transform scale(1)
+						border-radius 1em
+						
+						figure
+							padding 0.5em
+							display block
+							max-width 100px
+							font-weight 100%
+							margin 0 auto
+							img
+								width 100%
+								height auto
+						&:hover, &:focus
+							background-color rgba(white, 0.5)
+							transition 0.25s ease-in-out all
+							transform scale(1.1)
+							color #ff0000	
+.cVideo
+	background-color #ffce44
+	text-align center
+	iframe
+		width 80%
+		height 450px
+		display inline-block
+	p
+		padding 1em
+.cDescubrir
+	background url("../img/bgDescubrir.png") repeat #f5b5d2
+	background-size cover
+	background-position center
+	h2
+		color white
+		font-size 2em
+		font-weight bold
+		text-align center
+.sliderDots
+	padding 1em
+	position relative
+.sliderArrow 
+	position absolute
+	top 42%
+	width 100%
+	z-index 3
+	button
+		display block
+		position absolute
+		width 50px
+		height 50px
+		margin 2px
+		border 0
+		padding 4px
+		border-radius 50%
+		background-color rgba(white,0.8)
+		color colorPrimary
+		text-align center
+		&:hover, &:focus
+			background-color rgba(colorPrimary, 0.8)
+			color white
+		&.arrowNext
+			right 0
+		&.arrowPrev
+			left 0
+.sliderEducacion, .sliderBaul
+	text-align center
+	.item
+		padding 0.5em
+	figure
+		display inline-block
+		width 100%
+		height auto
+		max-width 130px
+		img
+			width 100%
+			height auto
+	h3
+		color #274365
+		font-weight bold
+		display block
+		text-align center
+		font-size 1em
+.cEducacion
+	display flex
+	justify-content center
+	align-items center
+	text-align center
+	.descEducacion
+		display flex
+		flex-direction column
+		justify-content center
+		padding 1em
+		text-align center
+		h2
+			font-weight bold
+			color #274365
+			font-size 2em
+			display block
+		img
+			width 100%
+			height auto
+			max-width 500px
+			display inline-block
+	.imgEducacion
+		text-align center
+		img
+			width 100%
+			height auto
+			max-width 450px
+			display inline-block
+.cActividades
+	background url("../img/bgDescubrir.png") repeat #fa9600
+	background-size cover
+	background-position center
+	h2
+		color white
+		font-size 2em
+		font-weight bold
+		text-align center
+.cJuegos
+	background-color #ffce44
+	h2
+		color colorPrimary
+		font-size 2em
+		font-weight bold
+		text-align center
+		margin-bottom 1em
+	.itemJuegos
+		text-align center
+		padding-bottom 1em
+		figure
+			display block
+			text-align center
+			img
+				display inline-block
+				max-width 250px
+				height auto
+				width 100%
+		h3
+			text-align center
+			font-weight bold
+			font-size 1.4em
+			min-height 52px
+		p
+			font-size 0.9em
+			color colorPrimary
+			line-height 1.2em
+			min-height 85px
+.cBaul
+	background-color white
+	text-align center
+	.descInformacion
+		display flex
+		flex-direction column
+		justify-content center
+		text-align center
+		h2
+			font-weight bold
+			color #274365
+			font-size 2em
+			display block
+	.uSlider
+		padding-top 1em
+		.item a
+			min-height 182px
+				
+@media screen and (min-width 768px)
+	.mainSlider 
+		padding-top 5em
+		padding-bottom 5em
+		.descSlider ul.listSlider li a
+			min-height 150px
+	.botonesFlotantes
+		position fixed
+		top 50vh
+		right 0
+@media screen and (max-width 768px)
+	.botonesFlotantes
+		font-size 0.9em
+		line-height 1
+		position fixed
+		bottom -1px
+		left 0
+		width 100%
+		ul 
+			margin 0
+			background-color white
+			li 
+				display inline-block
+				width 33.3%
+				float left
+				a
+					border-radius 0
+					max-width none
+					padding 0.5em 1em !important
+					width 100%
+					text-align center
+					&.edadActive
+						background-color #ff0000
+						transform scale(1)
+						margin-top 0
+						margin-bottom 0.2em
+	.zonasPortal h2
+		font-size 1.6em !important	
+@media screen and (max-width 500px)
+	.mainSlider .descSlider h1
+		font-size 1.8em
+@media screen and (max-width 320px)
+	.mainSlider .descSlider h1
+		font-size 1.2em
+/*** 
+* Footer
+***/
+footer 
+	background-color white
+	position relative
+	font-size 15px
+	color colorGrayDark
+	p
+		font-weight 400
+	a
+		color colorDos
+		text-decoration underline
+		
+	.nxBlock
+		padding 0
+	.footer
+		background linear-gradient(to bottom, rgba(white,1) 0%, rgba(white,1) 25%, rgba(#069169,1) 25%, rgba(#069169,1) 100%)
+		padding-bottom 4em
+		.container
+			background-color white
+			padding 2.5em
+			box-shadow 0 0 7px 3px rgba(black,0.2)
+		h2, h3, h4, h5, h6, .subtitle-govco, .description-govco, .title_sede
+			color colorPrimary
+	.title_sede
+		font-size 1em
+		margin 0
+		margin-bottom 0.5em
+	h3.title_sede
+		font-weight bold
+	.footer_sede_principal
+		h2
+			font-size 1.4em
+			margin-bottom 1em
+		ul
+			padding-left 1em
+			line-height 1
+			list-style none
+			li p
+				font-weight 400
+	.footer_sedes
+		padding-top 1em
+		padding-bottom 1em		
+	.footer_logo
+		img
+			display inline-block
+			max-width 350px
+			width 100%
+			height auto
+			padding 0.5em
+	.enlaces_footer
+		ul
+			padding 0
+			list-style none
+			li
+				display inline-block
+				vertical-align bottom
+				padding 0 0.3em
+				a
+					display block
+					color colorDos
+					font-weight 400
+					font-size 1em
+					strong
+						font-weight 400
+						color colorDos
+					&:hover, &:focus
+						color colorPrimary
+						strong
+							color colorPrimary
+	.enlaces_footer_destacados ul li a
+		font-weight 600
+		strong
+			font-weight 600
+.social_links ul
+	padding 0
+	li 
+		display inline-block
+		margin 0.5em 0
+		a
+			text-decoration none
+			color colorDos
+			padding 0.5em
+			i
+				font-size 1.1em
+				display inline-block
+				padding 5px
+				height 25px
+				width 25px
+				text-align center
+				background-color colorDos
+				color white
+				border-radius 50%
+			strong
+				fontMain()
+				font-weight 400
+			&:hover, &:focus
+				color colorPrimary
+				&:before
+					color white
+					background-color colorPrimary
+		&.listEnlaces li a
+			padding 0.5em
+.copywrite
+	background-color #3366cc
+	width 100%
+	padding 0.5em
+	img
+		max-width 200px
+	a
+		color white 
+		text-align right
+		display block
+		font-weight 400
+		&:hover, &:focus
+			color color-dark-blue
+.powered
+	position absolute
+	bottom 5px
+	right 15px
+	z-index 2
+	a
+		display block
+		font-size 0
+		height 20px
+		width auto
+		img
+			max-width 100px
+			width 100%
+			height auto
+		
+
+@media screen and (max-width 768px)
+	footer .enlaces_footer 
+		text-align center
+	footer .footer_sede_principal ul li p
+		word-break break-all
+		
+/** end footer **/
+				
+.dInterno
+	h1
+		padding-bottom 1em
+		padding-top 1em
+	.mainContent
+		padding 2em
+		.headerPub
+			padding-bottom 2em
+			
+		h1, h2, h3, h4, h5, h6
+			fontForHeaders()
+			color colorPrimary
+	.breadcrumb-item.active
+		color #ff0000
+	.pDestacado
+		color colorPrimary
+	.sideBar
+		padding 1em
+		border-radius 0.5em
+		background-color colorGrayLigth
+		h2
+			font-weight bold
+			font-size 1.3em	
+			margin-bottom 1.2em	
+		.bloqueEnlacesV
+			ul
+				padding 0
+				list-style none
+				ul
+					padding-left 1em
+			a
+				display block
+				color colorPrimary
+				padding 0.5em
+				&:hover, &:focus
+					background-color #ff0000
+					color white
+					text-decoration none
+				&.linkHead
+					padding 0
+					h3
+						color colorPrimary
+						background-color colorTres
+						display block
+						padding 0.6em 1em
+						border-radius 1.5em
+						font-size 0.9em
+						font-weight bold
+						text-transform uppercase
+					&:hover,&:focus
+						background-color transparent
+						h3
+							background-color #ff0000
+							color white
+@media screen and (max-width 768px)
+	.dInterno
+		h1
+			font-size 1.6em
+
+/** variaciones **/
+.portalNinos1
+	colorZona = #ffce44 
+	.mainSlider
+		background url("../img/ninos_1/bg_top.jpg") no-repeat
+		background-position center bottom
+		background-size cover
+	.cBaul
+		a
+			display block
+			background-color transparent
+			transition 0.25s ease-in-out all
+			padding 0.5em
+			border-radius 1em
+			&:hover, &:focus
+				background-color colorZona
+				transition 0.25s ease-in-out all
+	.cJuegos
+		background-color colorZona
+	&.dPrincipal footer .footer
+		background linear-gradient(to bottom, rgba(colorZona,1) 0%, rgba(colorZona,1) 25%, rgba(#069169,1) 25%, rgba(#069169,1) 100%)
+	&.dInterno
+		.sideBar .bloqueEnlacesV a.linkHead h3
+			background-color colorZona
+			color white
+.portalNinos2
+	colorZona = #f5b5d2 
+	.mainSlider
+		background url("../img/ninos_2/bg_top.jpg") no-repeat
+		background-position center bottom
+		background-size cover
+	.cBaul
+		a
+			display block
+			background-color transparent
+			transition 0.25s ease-in-out all
+			padding 0.5em
+			border-radius 1em
+			&:hover, &:focus
+				background-color colorZona
+				transition 0.25s ease-in-out all
+	.cJuegos
+		background-color colorZona
+		
+	&.dPrincipal footer .footer
+		background linear-gradient(to bottom, rgba(colorZona,1) 0%, rgba(colorZona,1) 25%, rgba(#069169,1) 25%, rgba(#069169,1) 100%)
+	&.dInterno
+		.sideBar .bloqueEnlacesV a.linkHead h3
+			background-color colorZona
+			color white
+.portalNinos3
+	colorZona = #87c5d5 
+	.mainSlider
+		background url("../img/ninos_3/bg_top.jpg") no-repeat
+		background-position center bottom
+		background-size cover
+	.cBaul
+		a
+			display block
+			background-color transparent
+			transition 0.25s ease-in-out all
+			padding 0.5em
+			border-radius 1em
+			&:hover, &:focus
+				background-color colorZona
+				transition 0.25s ease-in-out all
+	.cJuegos
+		background-color colorZona
+		
+	&.dPrincipal footer .footer
+		background linear-gradient(to bottom, rgba(colorZona,1) 0%, rgba(colorZona,1) 25%, rgba(#069169,1) 25%, rgba(#069169,1) 100%)
+	&.dInterno
+		.sideBar .bloqueEnlacesV a.linkHead h3
+			background-color colorZona
+			color white
